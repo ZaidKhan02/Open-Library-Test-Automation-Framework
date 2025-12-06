@@ -20,7 +20,7 @@ public class BaseTest {
 
     @BeforeMethod
     @Parameters({ "BaseURL" })
-    public void launchBrowser(@Optional("https://automationexercise.com/") String baseURL) {
+    public void launchBrowser(@Optional("https://openlibrary.org/account/login") String baseURL) {
         this.url = baseURL;
         driver = pickBrowser(System.getProperty("browser", "chrome"));
         driver.manage().window().maximize();

@@ -5,17 +5,26 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+//import dev.failsafe.internal.util.Assert;
+import pages.ForgotEmailPage;
+import pages.ForgotPasswordPage;
 import pages.HomePage;
 import pages.LoginPage;
 
-public class LoginTests extends BaseTest {
+public class AuthenticationTests extends BaseTest {
+
     LoginPage loginPage;
     HomePage homePage;
+    // I will remove bottom 2 to move to their own file, using it here for testing
+    ForgotEmailPage forgotEmailPage;
+    ForgotPasswordPage forgotPasswordPage;
 
     @BeforeMethod
     public void setUpPages() {
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
+        forgotEmailPage = new ForgotEmailPage(driver);
+        forgotPasswordPage = new ForgotPasswordPage(driver);
     }
 
     // mayb add dummy data providers here
@@ -68,6 +77,20 @@ public class LoginTests extends BaseTest {
     }
 
     @Test
+    public void passwordVisibilityToggleShowsPasswordText() {
+        loginPage.enterPassword("thisisapassword");
+        // Before clicking: should be hidden
+        Assert.assertEquals(loginPage.getPasswordInputType(), "password",
+                "Password should initially be hidden.");
+
+        loginPage.toggleShowPasswordBtn();
+
+        // After clicking: should be visible
+        Assert.assertEquals(loginPage.getPasswordInputType(), "text",
+                "Password should be visible after clicking show password.");
+    }
+
+    @Test
     public void loginEmailWithInvalidFormatValidPassword() {
         loginPage.loginUser("zaidlovesmath@", "Louiscathat123!");
         Assert.assertEquals(driver.getCurrentUrl(), url, "Should remain on login page after login attempt");
@@ -75,4 +98,28 @@ public class LoginTests extends BaseTest {
         Assert.assertTrue(homePage.isUserNotAvatarDisplayed(), "user avatar should not be visible after login attempt");
     }
 
+    @Test
+    public void logoutSuccessfully() {
+        loginPage.loginUser("zaidlovesmath@gmail.com", "Louiscathat123!");
+        homePage.clickHamburgerIcon();
+        homePage.clickLogoutBtn();
+        Assert.assertTrue(homePage.isLoginBtnDisplayed(), "Login button should be displayed after logging out");
+    }
+
+    // remove these 2 into their own files after testing if they work (or stay
+    // here?)
+    @Test
+    public void navigateToForgotEmailPage() {
+        String expectedPageHeader = "Forgot Your Internet Archive Email?";
+        loginPage.clickForgotEmail();
+        Assert.assertEquals(forgotEmailPage.getPageHeader(), expectedPageHeader,
+                "actual page header should match with expected page header");
+    }
+
+    @Test // I dont think its possible testing this
+    public void navigateToForgotPasswordPage() {
+        String expectedPageHeader = "Reset Your Password";
+        loginPage.clickForgotPassword();
+        Assert.assertEquals(forgotPasswordPage.getPageHeader(), expectedPageHeader);
+    }
 }

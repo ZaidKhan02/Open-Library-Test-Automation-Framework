@@ -50,6 +50,18 @@ public class BasePage {
         return waitForVisibility(locator).getText();
     }
 
+    protected String getAttribute(By locator, String attr) {
+        return waitForVisibility(locator).getAttribute(attr);
+    }
+
+    protected boolean isDisplayed(By locator) {
+        return waitForVisibility(locator).isDisplayed();
+    }
+
+    public boolean isNotDisplayed(By locator) {
+        return driver.findElements(locator).isEmpty();
+    }
+
     /*
      * protected boolean isElementDisplayed(By locator) {
      * try {
