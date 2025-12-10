@@ -26,6 +26,15 @@ public class BasePage {
      * }
      */
 
+    By userAvatar = By.cssSelector("img[class='account__icon']");
+    // By hamburgerIcon = By.cssSelector("img[class='hamburger__icon logged']");
+    By logoutBtn = By.cssSelector("form[name='hamburger-logout']");
+    By loginBtn = By.xpath("//li[@class='hide-me']//a[@href='/account/login']");
+    By searchBar = By.xpath("//form[@class='search-bar-input']//input[@type='text']");
+    By searchTypeBtn = By.xpath("//div[@class='search-facet']");
+    By authorTypeBtn = By.xpath("//label[@class='search-facet-selector']//option[3]");
+    By searchIcon = By.cssSelector("input[class=search-bar-submit]");
+
     protected WebElement waitForVisibility(By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
@@ -58,27 +67,54 @@ public class BasePage {
         return waitForVisibility(locator).isDisplayed();
     }
 
-    public boolean isNotDisplayed(By locator) {
+    protected boolean isNotDisplayed(By locator) {
         return driver.findElements(locator).isEmpty();
     }
 
-    /*
-     * protected boolean isElementDisplayed(By locator) {
-     * try {
-     * return waitForVisible(locator).isDisplayed();
-     * } catch (Exception e) {
-     * return false;
-     * }
-     * }
-     * 
-     * protected void waitForInvisibility(By locator) {
-     * wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
-     * }
-     * 
-     * protected void hoverOver(By locator) {
-     * WebElement element = waitForVisible(locator);
-     * actions.moveToElement(element).perform();
-     * }
-     */
+    // added these public methods into basepage since they are visible in all pages
+    // after login
+    public boolean isUserAvatarDisplayed() {
+        return isDisplayed(userAvatar);
+    }
+
+    public boolean isUserNotAvatarDisplayed() {
+        return isNotDisplayed(userAvatar);
+    }
+
+    public void clickUserAvatar() {
+        click(userAvatar);
+    }
+
+    public void clickLogoutBtn() {
+        click(logoutBtn);
+    }
+
+    public boolean isLoginBtnDisplayed() {
+        return isDisplayed(loginBtn);
+    }
+
+    // searching
+    public void clickSearchTypeBtn() {
+        click(searchTypeBtn);
+    }
+
+    public void clickAuthorTypeBtn() {
+        click(authorTypeBtn);
+    }
+
+    public void enterSearchInput(String input) {
+        type(searchBar, input);
+    }
+
+    public void clickSearchBtn() {
+        click(searchIcon);
+    }
+
+    public void search(String input) { // rename later
+        clickSearchTypeBtn();
+        clickAuthorTypeBtn();
+        enterSearchInput(input);
+        clickSearchBtn();
+    }
 
 }

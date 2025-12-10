@@ -7,17 +7,16 @@ import org.testng.annotations.Test;
 
 import pages.LoginPage;
 
+@Test
 public class PasswordVisibilityTest extends BaseTest {
     LoginPage loginPage;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUpPages() {
         loginPage = new LoginPage(driver);
     }
 
-    // mayb add dummy data providers here
-
-    @Test
+    @Test(groups = { "regression", "ui" })
     public void passwordVisibilityToggleShowsPasswordText() {
         loginPage.enterPassword("thisisapassword");
         // Before clicking: should be hidden

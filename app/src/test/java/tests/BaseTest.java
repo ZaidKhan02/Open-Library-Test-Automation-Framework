@@ -18,7 +18,7 @@ public class BaseTest {
     protected WebDriver driver;
     protected String url;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     @Parameters({ "BaseURL" })
     public void launchBrowser(@Optional("https://openlibrary.org/account/login") String baseURL) {
         this.url = baseURL;

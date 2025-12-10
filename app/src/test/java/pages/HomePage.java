@@ -9,33 +9,30 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
-    By userAvatar = By.cssSelector("img[class='account__icon']");
-    By hamburgerIcon = By.cssSelector("img[class='hamburger__icon logged']");
-    By logoutBtn = By.cssSelector("form[name='hamburger-logout']");
-    By loginBtn = By.xpath("//li[@class='hide-me']//a[@href='/account/login']");
-
-    public boolean isUserAvatarDisplayed() {
-        return isDisplayed(userAvatar);
-    }
-
-    public boolean isUserNotAvatarDisplayed() {
-        return isNotDisplayed(userAvatar);
-    }
-
-    public void clickHamburgerIcon() {
-        click(hamburgerIcon);
-    }
-
-    public void clickLogoutBtn() {
-        click(logoutBtn);
-    }
-
-    public boolean isLoginBtnDisplayed() {
-        return isDisplayed(loginBtn);
-    }
+    /*
+     * By userAvatar = By.cssSelector("img[class='account__icon']");
+     * By hamburgerIcon = By.cssSelector("img[class='hamburger__icon logged']");
+     * By logoutBtn = By.cssSelector("form[name='hamburger-logout']");
+     * By loginBtn = By.xpath("//li[@class='hide-me']//a[@href='/account/login']");
+     * 
+     * public boolean isUserAvatarDisplayed() {
+     * return isDisplayed(userAvatar);
+     * }
+     * 
+     * public boolean isUserNotAvatarDisplayed() {
+     * return isNotDisplayed(userAvatar);
+     * }
+     * 
+     * public void clickHamburgerIcon() {
+     * click(hamburgerIcon);
+     * }
+     * 
+     * public void clickLogoutBtn() {
+     * click(logoutBtn);
+     * }
+     * 
+     * public boolean isLoginBtnDisplayed() {
+     * return isDisplayed(loginBtn);
+     * }
+     */
 }
-
-// In test:
-// HomePage home = new HomePage(driver);
-// Assert.assertTrue(home.isUserAvatarDisplayed(), "User avatar should be
-// visible.");

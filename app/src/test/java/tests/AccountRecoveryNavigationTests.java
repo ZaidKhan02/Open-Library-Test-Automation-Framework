@@ -9,21 +9,20 @@ import pages.ForgotEmailPage;
 import pages.ForgotPasswordPage;
 import pages.LoginPage;
 
+@Test
 public class AccountRecoveryNavigationTests extends BaseTest {
     LoginPage loginPage;
     ForgotEmailPage forgotEmailPage;
     ForgotPasswordPage forgotPasswordPage;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUpPages() {
         loginPage = new LoginPage(driver);
         forgotEmailPage = new ForgotEmailPage(driver);
         forgotPasswordPage = new ForgotPasswordPage(driver);
     }
 
-    // mayb add dummy data providers here
-
-    @Test
+    @Test(groups = { "regression", "navigation" })
     public void navigateToForgotEmailPage() {
         String expectedPageHeader = "Forgot Your Internet Archive Email?";
         loginPage.clickForgotEmail();

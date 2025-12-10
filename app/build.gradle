@@ -23,7 +23,7 @@ java {
         languageVersion = JavaLanguageVersion.of(21)
     }
 }
-
+ 
 application {
     // Define the main class for the application.
     mainClass = 'org.example.App'
@@ -59,8 +59,26 @@ dependencies {
 
 test {
     useTestNG() {
-        suites "src/test/resources/TestNG.xml"
-        systemProperty "browser", System.getProperty("browser", "chrome")
-
+        //suites "src/test/resources/testng.xml"
+        //suites "src/test/resources/smoke.xml"
+        suites "src/test/resources/regression.xml"
+        systemProperty "browser", System.getProperty("browser")
     }
 }
+
+/*test {
+    useTestNG()
+}
+
+tasks.register('smoke', Test) {
+    useTestNG() {
+        suites 'src/test/resources/smoke.xml'
+    }
+}
+
+tasks.register('regression', Test) {
+    useTestNG() {
+        suites 'src/test/resources/regression.xml'
+    }
+}
+*/

@@ -15,7 +15,3 @@ public class ForgotEmailPage extends BasePage {
         return getText(pageHeader);
     }
 }
-
-// we can do same thing where we store expectedmsg string in test file and get
-// the actual text here
-// regerring to text "forgot your internet archive email"

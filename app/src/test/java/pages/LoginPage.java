@@ -64,6 +64,3 @@ public class LoginPage extends BasePage {
     }
 
 }
-
-// for error message for worng email or password can i not have string of error
-// message and compare it with what i gt from gettext? similar to what fraz did

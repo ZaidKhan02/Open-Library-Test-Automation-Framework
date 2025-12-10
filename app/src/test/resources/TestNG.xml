@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="TestNG"> 
+<suite name="OpenLibrary Suite"> 
     <parameter name="BaseURL" value="https://openlibrary.org/account/login"/>
-    <test name="Login Tests" preserve-order="false">
-        <classes>
-            <class name="PracticeTest"/>
-        </classes>
+    <test name="All Tests" preserve-order="false">
+        <packages>
+            <package name="tests">
+        </packages>
     </test>
 </suite>
 
