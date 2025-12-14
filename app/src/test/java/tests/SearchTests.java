@@ -16,9 +16,9 @@ public class SearchTests extends BaseTest {
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
-        loginPage = new LoginPage(driver);
-        homePage = new HomePage(driver);
-        searchPage = new SearchPage(driver);
+        loginPage = new LoginPage(getDriver());
+        homePage = new HomePage(getDriver());
+        searchPage = new SearchPage(getDriver());
         loginPage.loginUser("zk7832456@gmail.com", "zk7832456pw");
 
     }

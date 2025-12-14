@@ -15,8 +15,8 @@ public class LogoutTest extends BaseTest {
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
-        loginPage = new LoginPage(driver);
-        homePage = new HomePage(driver);
+        loginPage = new LoginPage(getDriver());
+        homePage = new HomePage(getDriver());
     }
 
     @Test(groups = { "smoke", "logout" })

@@ -15,16 +15,21 @@ import org.testng.annotations.Parameters;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
-    protected WebDriver driver;
+    // protected WebDriver driver;
+    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     protected String url;
+
+    protected WebDriver getDriver() {
+        return driver.get();
+    }
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({ "BaseURL" })
     public void launchBrowser(@Optional("https://openlibrary.org/account/login") String baseURL) {
         this.url = baseURL;
-        driver = pickBrowser(System.getProperty("browser", "chrome"));
-        driver.manage().window().maximize();
-        driver.get(url);
+        driver.set(pickBrowser(System.getProperty("browser", "chrome")));
+        getDriver().manage().window().maximize();
+        getDriver().get(url);
     }
 
     public WebDriver pickBrowser(String browser) {
@@ -55,10 +60,9 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun = true)
     public void closeBrowser() {
-        if (driver != null) {
-            driver.quit();
+        if (getDriver() != null) {
+            getDriver().quit();
+            driver.remove();
         }
     }
 }
-
-// add all the stuff for parallel testing, selenium grid, parameters

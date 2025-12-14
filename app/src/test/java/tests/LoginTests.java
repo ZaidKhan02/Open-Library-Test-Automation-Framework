@@ -16,8 +16,8 @@ public class LoginTests extends BaseTest {
 
     @BeforeMethod(alwaysRun = true)
     public void setUpPages() {
-        loginPage = new LoginPage(driver);
-        homePage = new HomePage(driver);
+        loginPage = new LoginPage(getDriver());
+        homePage = new HomePage(getDriver());
     }
 
     @Test(groups = { "smoke", "login" })
@@ -43,7 +43,7 @@ public class LoginTests extends BaseTest {
                     "Actual error message should match expected error message");
         } else {
             // Generic safe assertions for cases with native browser validation
-            Assert.assertEquals(driver.getCurrentUrl(), url,
+            Assert.assertEquals(getDriver().getCurrentUrl(), url,
                     "Should remain on login page after invalid login attempt");
             Assert.assertTrue(loginPage.isLoginBtnDisplayed(),
                     "Login button should still be visible");

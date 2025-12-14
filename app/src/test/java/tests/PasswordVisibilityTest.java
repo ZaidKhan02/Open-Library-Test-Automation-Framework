@@ -13,7 +13,7 @@ public class PasswordVisibilityTest extends BaseTest {
 
     @BeforeMethod(alwaysRun = true)
     public void setUpPages() {
-        loginPage = new LoginPage(driver);
+        loginPage = new LoginPage(getDriver());
     }
 
     @Test(groups = { "regression", "ui" })

@@ -16,11 +16,11 @@ public class BookActionsTest extends BaseTest {
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
-        loginPage = new LoginPage(driver);
-        homePage = new HomePage(driver);
-        searchPage = new SearchPage(driver);
-        profilePage = new ProfilePage(driver);
-        wantToReadPage = new WantToReadPage(driver);
+        loginPage = new LoginPage(getDriver());
+        homePage = new HomePage(getDriver());
+        searchPage = new SearchPage(getDriver());
+        profilePage = new ProfilePage(getDriver());
+        wantToReadPage = new WantToReadPage(getDriver());
         loginPage.loginUser("zk7832456@gmail.com", "zk7832456pw");
     }
 

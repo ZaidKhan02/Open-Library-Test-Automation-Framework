@@ -16,11 +16,11 @@ public class AuthorizationTests extends BaseTest {
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
-        loginPage = new LoginPage(driver);
-        homePage = new HomePage(driver);
-        searchPage = new SearchPage(driver);
-        bookPage = new BookPage(driver);
-        editBookPage = new EditBookPage(driver);
+        loginPage = new LoginPage(getDriver());
+        homePage = new HomePage(getDriver());
+        searchPage = new SearchPage(getDriver());
+        bookPage = new BookPage(getDriver());
+        editBookPage = new EditBookPage(getDriver());
         loginPage.loginUser("zk7832456@gmail.com", "zk7832456pw");
 
     }

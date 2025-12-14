@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="OpenLibrary Suite"> 
+<suite name="OpenLibrary Suite" parallel="methods" thread-count="3"> 
     <parameter name="BaseURL" value="https://openlibrary.org/account/login"/>
     <test name="All Tests" preserve-order="false">
         <packages>

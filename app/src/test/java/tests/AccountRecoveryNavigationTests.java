@@ -17,9 +17,9 @@ public class AccountRecoveryNavigationTests extends BaseTest {
 
     @BeforeMethod(alwaysRun = true)
     public void setUpPages() {
-        loginPage = new LoginPage(driver);
-        forgotEmailPage = new ForgotEmailPage(driver);
-        forgotPasswordPage = new ForgotPasswordPage(driver);
+        loginPage = new LoginPage(getDriver());
+        forgotEmailPage = new ForgotEmailPage(getDriver());
+        forgotPasswordPage = new ForgotPasswordPage(getDriver());
     }
 
     @Test(groups = { "regression", "navigation" })
