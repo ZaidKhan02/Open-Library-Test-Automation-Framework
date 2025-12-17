@@ -24,7 +24,7 @@ public class BookActionsTest extends BaseTest {
         loginPage.loginUser("zk7832456@gmail.com", "zk7832456pw");
     }
 
-    @Test(groups = { "smoke" })
+    @Test(groups = { "regression" })
     public void shouldAddBookToWantToReadAndDisplayInUserProfile() {
         String expectedBookName = "Harry Potter and the Order of the Phoenix";
         homePage.enterSearchInput("Harry Potter and the Order of the Phoenix");

@@ -25,7 +25,7 @@ public class AuthorizationTests extends BaseTest {
 
     }
 
-    @Test(groups = { "smoke" })
+    @Test(groups = { "regression" })
     public void shouldRedirectToLoginWhenBorrowingBookWhileLoggedOut() {
         homePage.clickUserAvatar();
         homePage.clickLogoutBtn();
@@ -36,7 +36,7 @@ public class AuthorizationTests extends BaseTest {
                 "User should be redirected to login when borrowing while logged out");
     }
 
-    @Test(groups = { "smoke" })
+    @Test(groups = { "regression" })
     public void shouldDisplayPermissionDeniedWhenUnauthorizedUserEditsBook() {
         String expectedPageHeader = "Permission denied.";
         homePage.enterSearchInput("Harry Potter and the Order of the Phoenix");

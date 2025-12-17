@@ -21,7 +21,7 @@ public class LogoutTest extends BaseTest {
 
     @Test(groups = { "smoke", "logout" })
     public void logoutSuccessfully() {
-        loginPage.loginUser("zk8932456@gmail.com", "zk7832456pw");
+        loginPage.loginUser("zk7832456@gmail.com", "zk7832456pw");
         homePage.clickUserAvatar();
         homePage.clickLogoutBtn();
         Assert.assertTrue(homePage.isLoginBtnDisplayed(), "Login button should be displayed after logging out");

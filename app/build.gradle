@@ -57,28 +57,20 @@ dependencies {
     testImplementation 'io.cucumber:gherkin:27.0.0'
 }
 
-test {
+/*test {
     useTestNG() {
         //suites "src/test/resources/testng.xml"
         //suites "src/test/resources/smoke.xml"
         suites "src/test/resources/regression.xml"
         systemProperty "browser", System.getProperty("browser")
     }
-}
+}*/
 
-/*test {
-    useTestNG()
-}
-
-tasks.register('smoke', Test) {
+test {
     useTestNG() {
-        suites 'src/test/resources/smoke.xml'
+        def suiteName = System.getProperty("suite", "smoke")
+        suites "src/test/resources/${suiteName}.xml"
     }
-}
 
-tasks.register('regression', Test) {
-    useTestNG() {
-        suites 'src/test/resources/regression.xml'
-    }
+    systemProperty "browser", System.getProperty("browser", "chrome")
 }
-*/
