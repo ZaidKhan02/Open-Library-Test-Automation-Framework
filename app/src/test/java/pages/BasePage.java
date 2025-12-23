@@ -21,12 +21,6 @@ public class BasePage {
         this.actions = new Actions(driver);
     }
 
-    /*
-     * public WebElement findElement(By locator) {
-     * return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-     * }
-     */
-
     By userAvatar = By.cssSelector("img[class='account__icon']");
     // By hamburgerIcon = By.cssSelector("img[class='hamburger__icon logged']");
     By logoutBtn = By.cssSelector("form[name='hamburger-logout']");

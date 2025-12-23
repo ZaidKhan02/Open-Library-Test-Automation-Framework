@@ -1,5 +1,8 @@
 package tests;
 
+import java.net.MalformedURLException;
+import java.net.URI;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -7,6 +10,8 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
@@ -25,14 +30,18 @@ public class BaseTest {
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({ "BaseURL" })
-    public void launchBrowser(@Optional("https://openlibrary.org/account/login") String baseURL) {
+    public void launchBrowser(@Optional("https://openlibrary.org/account/login") String baseURL)
+            throws MalformedURLException {
         this.url = baseURL;
         driver.set(pickBrowser(System.getProperty("browser", "chrome")));
         getDriver().manage().window().maximize();
         getDriver().get(url);
     }
 
-    public WebDriver pickBrowser(String browser) {
+    public WebDriver pickBrowser(String browser) throws MalformedURLException {
+        DesiredCapabilities caps = new DesiredCapabilities();
+        String gridURL = "http://192.168.55.103:4444";
+
         switch (browser.toLowerCase()) {
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
@@ -48,6 +57,18 @@ public class BaseTest {
                 edgeOptions.addArguments("--remote-allow-origins=*");
                 edgeOptions.addArguments("--disable-notifications");
                 return new EdgeDriver(edgeOptions);
+
+            case "grid-edge":
+                caps.setCapability("browserName", "MicrosoftEdge");
+                return new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+
+            case "grid-firefox":
+                caps.setCapability("browserName", "firefox");
+                return new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+
+            case "grid-chrome":
+                caps.setCapability("browserName", "chrome");
+                return new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
 
             default:
                 WebDriverManager.chromedriver().setup();
