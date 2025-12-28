@@ -36,7 +36,7 @@ public class LoginTests extends BaseTest {
             "login-negative" }, dataProvider = "negativeLoginData", dataProviderClass = AuthDataProviders.class)
     public void negativeLoginTests(String email, String password, String expectedMsg) {
 
-        loginPage.loginUser(email, password);
+        loginPage.loginUser(email, password); 
 
         if (expectedMsg != null) {
             Assert.assertEquals(loginPage.getInvalidErrorMsg(), expectedMsg,

@@ -29,7 +29,7 @@ public class LoginPage extends BasePage {
         type(passwordField, password);
     }
 
-    public void clickLogin() {
+    public void clickLogin() { 
         click(loginBtn);
     }
 

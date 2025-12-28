@@ -26,7 +26,7 @@ public class PaginationTest extends BaseTest {
         homePage.clickSearchBtn();
 
         int page1Count = searchPage.getDisplayedBooksCount();
-        Assert.assertTrue(
+        Assert.assertTrue( 
                 page1Count > 0 && page1Count <= 20,
                 "Page 1 should display up to 20 books, but found " + page1Count);
 

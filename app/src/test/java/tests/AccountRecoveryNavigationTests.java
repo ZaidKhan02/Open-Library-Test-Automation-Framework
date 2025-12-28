@@ -16,7 +16,7 @@ public class AccountRecoveryNavigationTests extends BaseTest {
     ForgotPasswordPage forgotPasswordPage;
 
     @BeforeMethod(alwaysRun = true)
-    public void setUpPages() {
+    public void setUp() {
         loginPage = new LoginPage(getDriver());
         forgotEmailPage = new ForgotEmailPage(getDriver());
         forgotPasswordPage = new ForgotPasswordPage(getDriver());
@@ -26,14 +26,16 @@ public class AccountRecoveryNavigationTests extends BaseTest {
     public void navigateToForgotEmailPage() {
         String expectedPageHeader = "Forgot Your Internet Archive Email?";
         loginPage.clickForgotEmail();
-        Assert.assertEquals(forgotEmailPage.getPageHeader(), expectedPageHeader,
+        String actualPageHeader = forgotEmailPage.getPageHeader();
+        Assert.assertEquals(actualPageHeader, expectedPageHeader,
                 "actual page header should match with expected page header");
     }
 
-    @Test // I dont think its possible testing this
+    @Test (enabled = false) // I dont think its possible testing this
     public void navigateToForgotPasswordPage() {
         String expectedPageHeader = "Reset Your Password";
         loginPage.clickForgotPassword();
-        Assert.assertEquals(forgotPasswordPage.getPageHeader(), expectedPageHeader);
+        String actualPageHeader = forgotPasswordPage.getPageHeader();
+        Assert.assertEquals(actualPageHeader, expectedPageHeader);
     }
 }

@@ -48,7 +48,6 @@ public class BasePage {
     }
 
     protected void click(By locator) {
-        // something like click(loginBtn)
         waitForClickable(locator).click();
     }
 

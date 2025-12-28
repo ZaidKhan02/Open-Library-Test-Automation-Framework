@@ -61,6 +61,7 @@ public class BookActionsTest extends BaseTest {
         String currentStatus = searchPage.getBookStatus();
 
         if ("Already Read".equalsIgnoreCase(currentStatus)) {
+            //can i not just do if (currentStatus.startsWith("Already Read"))
             searchPage.clickSearchDropDownBtn();
             searchPage.clickWantToReadDropDownBtn();
             homePage.clickSearchBtn();

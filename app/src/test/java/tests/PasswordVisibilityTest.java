@@ -19,7 +19,7 @@ public class PasswordVisibilityTest extends BaseTest {
     @Test(groups = { "regression", "ui" })
     public void passwordVisibilityToggleShowsPasswordText() {
         loginPage.enterPassword("thisisapassword");
-        // Before clicking: should be hidden
+        // Before clicking: should be hidden 
         Assert.assertEquals(loginPage.getPasswordInputType(), "password",
                 "Password should initially be hidden.");
 

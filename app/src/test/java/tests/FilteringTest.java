@@ -27,7 +27,7 @@ public class FilteringTest extends BaseTest {
         homePage.enterSearchInput("Harry Potter and the Order of the Phoenix");
         homePage.clickSearchBtn();
 
-        List<Double> ratings = searchPage.getAllBookRatings();
+        List<Double> ratings = searchPage.getAllBookRatings(); 
 
         // Guard clause to prevent false failures
         Assert.assertTrue(ratings.size() >= 2, "Less than two rated books were found in search results");

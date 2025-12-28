@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class SearchPage extends BasePage {
+public class SearchPage extends BasePage { 
 
     public SearchPage(WebDriver driver) {
         super(driver);
@@ -37,7 +37,7 @@ public class SearchPage extends BasePage {
     public List<Double> getAllBookRatings() {
         List<WebElement> results = driver.findElements(searchResults);
         List<Double> ratings = new ArrayList<>();
-
+ 
         for (WebElement result : results) {
             List<WebElement> meta = result.findElements(By.cssSelector("meta[itemprop='ratingValue']"));
 
