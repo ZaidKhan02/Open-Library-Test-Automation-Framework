@@ -9,7 +9,6 @@ import dataproviders.AuthDataProviders;
 import pages.HomePage;
 import pages.LoginPage;
 
-@Test
 public class LoginTests extends BaseTest {
     LoginPage loginPage;
     HomePage homePage;
@@ -17,26 +16,26 @@ public class LoginTests extends BaseTest {
     @BeforeMethod(alwaysRun = true)
     public void setUpPages() {
         loginPage = new LoginPage(getDriver());
-        homePage = new HomePage(getDriver());
+        /* homePage = new HomePage(getDriver()); */
     }
 
     @Test(groups = { "smoke", "login" })
     public void loginValidEmailValidPassword() {
-        loginPage.loginUser("zk7832456@gmail.com", "zk7832456pw");
+        /* loginPage.loginUser("zk7832456@gmail.com", "zk7832456pw"); */
+        HomePage homePage = loginPage.loginUser("zk7832456@gmail.com", "zk7832456pw");
         Assert.assertTrue(homePage.isUserAvatarDisplayed(), "Avatar should be visible after login");
     }
 
     @Test(groups = { "regression", "login" })
     public void loginEmailWithWhitespaceValidPassword() {
-        loginPage.loginUser("  zk7832456@gmail.com  ", "zk7832456pw");
+        HomePage homePage = loginPage.loginUser("  zk7832456@gmail.com  ", "zk7832456pw");
         Assert.assertTrue(homePage.isUserAvatarDisplayed(), "Avatar should be visible after login");
     }
 
     @Test(groups = { "regression",
             "login-negative" }, dataProvider = "negativeLoginData", dataProviderClass = AuthDataProviders.class)
     public void negativeLoginTests(String email, String password, String expectedMsg) {
-
-        loginPage.loginUser(email, password); 
+        loginPage.loginUser(email, password);
 
         if (expectedMsg != null) {
             Assert.assertEquals(loginPage.getInvalidErrorMsg(), expectedMsg,
@@ -47,7 +46,7 @@ public class LoginTests extends BaseTest {
                     "Should remain on login page after invalid login attempt");
             Assert.assertTrue(loginPage.isLoginBtnDisplayed(),
                     "Login button should still be visible");
-            Assert.assertTrue(homePage.isUserNotAvatarDisplayed(),
+            Assert.assertTrue(loginPage.isUserNotAvatarDisplayed(),
                     "User avatar should not be visible");
         }
     }

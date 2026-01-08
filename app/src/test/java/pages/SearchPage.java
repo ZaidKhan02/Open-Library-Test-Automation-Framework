@@ -6,11 +6,13 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 
-public class SearchPage extends BasePage { 
+public class SearchPage extends BasePage {
 
     public SearchPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
     By authorName = By.xpath("//ul[contains(@class, 'authorList')]//li[1]//a");
@@ -37,7 +39,7 @@ public class SearchPage extends BasePage {
     public List<Double> getAllBookRatings() {
         List<WebElement> results = driver.findElements(searchResults);
         List<Double> ratings = new ArrayList<>();
- 
+
         for (WebElement result : results) {
             List<WebElement> meta = result.findElements(By.cssSelector("meta[itemprop='ratingValue']"));
 

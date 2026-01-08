@@ -8,20 +8,18 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
 
-@Test
 public class LogoutTest extends BaseTest {
     LoginPage loginPage;
-    HomePage homePage;
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
         loginPage = new LoginPage(getDriver());
-        homePage = new HomePage(getDriver());
     }
 
     @Test(groups = { "smoke", "logout" })
     public void logoutSuccessfully() {
-        loginPage.loginUser("zk7832456@gmail.com", "zk7832456pw");
+        // loginPage.loginUser("zk7832456@gmail.com", "zk7832456pw");
+        HomePage homePage = loginPage.loginUser("zk7832456@gmail.com", "zk7832456pw");
         homePage.clickUserAvatar();
         homePage.clickLogoutBtn();
         Assert.assertTrue(homePage.isLoginBtnDisplayed(), "Login button should be displayed after logging out");

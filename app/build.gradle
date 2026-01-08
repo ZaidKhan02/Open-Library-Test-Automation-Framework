@@ -77,4 +77,13 @@ test {
     }
 
     systemProperty "browser", System.getProperty("browser", "chrome")
+
+    reports {
+        junitXml.required.set(true)
+        html.required.set(true)
+    }
+
+    testLogging {
+        events "passed", "failed", "skipped"
+    }
 }

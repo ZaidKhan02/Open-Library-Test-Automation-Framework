@@ -10,25 +10,21 @@ import dataproviders.SearchBookDataProvider;
 import pages.*;
 
 public class SearchTests extends BaseTest {
-    LoginPage loginPage;
     HomePage homePage;
     SearchPage searchPage;
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
-        loginPage = new LoginPage(getDriver());
         homePage = new HomePage(getDriver());
-        searchPage = new SearchPage(getDriver());
-        loginPage.loginUser("zk7832456@gmail.com", "zk7832456pw");
-
     }
 
     @Test(groups = { "smoke" })
     public void searchByValidAuthorName() {
-        String expectedAuthorName = "J.K. Rowling";
+        String expectedAuthorName = "J. K. Rowling";
         homePage.clickAuthorTypeBtn();
         homePage.enterSearchInput("JK Rowling");
-        homePage.clickSearchBtn();
+        // homePage.clickSearchBtn();
+        SearchPage searchPage = homePage.clickSearchBtn();
         String actualAuthorName = searchPage.getAuthorName();
         Assert.assertEquals(actualAuthorName, expectedAuthorName,
                 "Actual author name should match expected author name");
@@ -63,6 +59,7 @@ public class SearchTests extends BaseTest {
     @Test(groups = {
             "regression" }, dataProvider = "authorSearchData", dataProviderClass = SearchAuthorDataProviders.class)
     public void searchByAuthorRegression(String input, String expectedResult) {
+        searchPage = new SearchPage(getDriver());
         homePage.clickAuthorTypeBtn();
         homePage.enterSearchInput(input);
         homePage.clickSearchBtn();

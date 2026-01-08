@@ -29,9 +29,11 @@ public class LoginPage extends BasePage {
         type(passwordField, password);
     }
 
-    public void clickLogin() { 
-        click(loginBtn);
-    }
+    /*
+     * public void clickLogin() {
+     * click(loginBtn);
+     * }
+     */
 
     public void toggleShowPasswordBtn() {
         click(showPasswordBtn);
@@ -57,10 +59,15 @@ public class LoginPage extends BasePage {
         return isDisplayed(loginBtn);
     }
 
-    public void loginUser(String email, String password) {
+    public HomePage clickLogin() {
+        click(loginBtn);
+        return new HomePage(driver);
+    }
+
+    public HomePage loginUser(String email, String password) {
         enterEmail(email);
         enterPassword(password);
-        clickLogin();
+        return clickLogin();
     }
 
 }

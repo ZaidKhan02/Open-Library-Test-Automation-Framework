@@ -31,7 +31,7 @@ public class AccountRecoveryNavigationTests extends BaseTest {
                 "actual page header should match with expected page header");
     }
 
-    @Test (enabled = false) // I dont think its possible testing this
+    @Test(enabled = false) // I dont think its possible testing this
     public void navigateToForgotPasswordPage() {
         String expectedPageHeader = "Reset Your Password";
         loginPage.clickForgotPassword();

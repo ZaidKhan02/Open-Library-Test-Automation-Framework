@@ -39,7 +39,6 @@ public class BookActionsTest extends BaseTest {
     }
 
     @Test(groups = { "regression" })
-    // after this test, set the status back to want to read for it to work
     public void shouldMarkBookAsAlreadyReadAndReflectStatusInSearchResults() {
         String expectedBookStatus = "Already Read";
         homePage.enterSearchInput("Harry Potter and the Order of the Phoenix");
@@ -61,7 +60,7 @@ public class BookActionsTest extends BaseTest {
         String currentStatus = searchPage.getBookStatus();
 
         if ("Already Read".equalsIgnoreCase(currentStatus)) {
-            //can i not just do if (currentStatus.startsWith("Already Read"))
+            // can i not just do if (currentStatus.startsWith("Already Read"))
             searchPage.clickSearchDropDownBtn();
             searchPage.clickWantToReadDropDownBtn();
             homePage.clickSearchBtn();

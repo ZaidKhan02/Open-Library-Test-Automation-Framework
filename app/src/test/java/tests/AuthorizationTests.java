@@ -21,14 +21,11 @@ public class AuthorizationTests extends BaseTest {
         searchPage = new SearchPage(getDriver());
         bookPage = new BookPage(getDriver());
         editBookPage = new EditBookPage(getDriver());
-        loginPage.loginUser("zk7832456@gmail.com", "zk7832456pw");
-
     }
 
     @Test(groups = { "regression" })
     public void shouldRedirectToLoginWhenBorrowingBookWhileLoggedOut() {
-        homePage.clickUserAvatar();
-        homePage.clickLogoutBtn();
+
         homePage.enterSearchInput("Catharsis in healing, ritual, and drama");
         homePage.clickSearchBtn();
         searchPage.clickBorrowBookBtn();
@@ -42,8 +39,6 @@ public class AuthorizationTests extends BaseTest {
         homePage.enterSearchInput("Harry Potter and the Order of the Phoenix");
         homePage.clickSearchBtn();
         searchPage.clickBookName();
-        homePage.clickUserAvatar();
-        homePage.clickLogoutBtn();
         bookPage.clickEditBtn();
         String actualPageHeader = editBookPage.getPageHeader();
         Assert.assertEquals(actualPageHeader, expectedPageHeader,

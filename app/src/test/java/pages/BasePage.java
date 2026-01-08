@@ -113,8 +113,9 @@ public class BasePage {
         type(searchBar, input);
     }
 
-    public void clickSearchBtn() {
+    public SearchPage clickSearchBtn() {
         click(searchIcon);
+        return new SearchPage(driver);
     }
 
     public void search(String input) { // rename later
